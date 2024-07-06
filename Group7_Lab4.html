@@ -10,22 +10,22 @@
     let timers = []; 
 
     let log = (function (outputFunc) {
-        let cnt = 0; // Counter
-        let cLog = []; // caller names Array
-        let dtLog = []; // log date and time Array
+        let counter = 0; 
+        let callerLog = []; 
+        let dateTime = []; 
 
         // Return an anonymous function
         return function(caller) {
-            cnt++; 
-            cLog.push(caller); 
-            dtLog.push(new Date()); 
+            counter++; 
+            callerLog.push(caller); 
+            dateTime.push(new Date()); 
 
-            let output = cnt + " " + cLog[cLog.length - 1] + " " + dtLog[dtLog.length - 1];
+            let output = counter + " " + callerLog[callerLog.length - 1] + " " + dateTime[dateTime.length - 1];
 
             outputFunc(output);
 
             // If counter exceeds 10, stop all timers
-            if (cnt > 10) {
+            if (counter > 10) {
                 for (let x = 0; x < timers.length; x++) {
                     clearInterval(timers[x]);
                 }
